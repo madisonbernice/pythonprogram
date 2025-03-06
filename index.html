@@ -1,43 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-    span.Apple-tab-span {white-space:pre}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive PyScript Program</title>
+
+    <!-- Link to PyScript CSS for styling -->
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <!-- PyScript JavaScript for enabling Python in the browser -->
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang=“en”&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;meta charset=“UTF-8”&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;meta name=“viewport” content=“width=device-width, initial-scale=1.0”&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;title&gt;Interactive Python Program&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;link rel=“stylesheet” href=“https://pyscript.net/latest/pyscript.css”&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;script defer src=“https://pyscript.net/latest/pyscript.js”&gt;&lt;/script&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;h1&gt;Interactive Python Program&lt;/h1&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>&lt;py-input id=“user_input”&gt;&lt;/py-input&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>&lt;button onclick=“runProgram()”&gt;Run&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;py-script&gt;</p>
-<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>def runProgram():</p>
-<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>user_input = document[‘user_input’].value</p>
-<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>document[‘output’].text = f”Hello, {user_input}!”</p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;/py-script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-tab-span">	</span>&lt;div id=“output”&gt;&lt;/div&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <h1>Welcome to PyScript!</h1>
+    <p>Enter your name below and click 'Greet Me'.</p>
+
+    <!-- User input for name -->
+    <input id="name" type="text" placeholder="Enter your name">
+    <button id="greet_button">Greet Me</button>
+
+    <!-- Area to display the result -->
+    <p id="greeting"></p>
+
+    <!-- PyScript: Python code for interaction -->
+    <py-script>
+        # Importing necessary modules
+        from browser import document
+
+        # Function to greet the user
+        def greet_user(event):
+            name = document["name"].value  # Get the name entered by the user
+            greeting = f"Hello, {name}!"  # Create the greeting message
+            document["greeting"].text = greeting  # Display the greeting
+
+        # Adding event listener to the button
+        document["greet_button"].bind("click", greet_user)
+    </py-script>
 </body>
 </html>
